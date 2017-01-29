@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+@font-face{
+   font-family:'digital-clock-font';
+   src: url('fonts/digital-7.ttf');
+}
+
 html {
     min-height: 100%;
 }
@@ -332,6 +337,44 @@ body {
 
 .goodie p {
     font-size: 0.7em;
+}
+
+.sold-counter {
+    font-family: digital-clock-font;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    white-space:nowrap;
+    padding-bottom: 10px;
+}
+
+.sold-counter .digit {
+    background: rgb(167, 167, 167);
+    border: 1px solid;
+    border-color: rgb(230, 230, 230);
+    border-radius: 4px;
+    display: inline-block;
+    width: 0.7em;
+    margin-left: 2px;
+
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A7A7A7), to(#BEBEBE));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #A7A7A7, #BEBEBE);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #A7A7A7, #BEBEBE);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #A7A7A7, #BEBEBE);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #A7A7A7, #BEBEBE);
+}
+
+.sold-counter .separator {
+    color: rgb(167, 167, 167);
+    position: relative;
+    top: 5px;
 }
 
 .unlockables {

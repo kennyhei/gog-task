@@ -1,5 +1,6 @@
-GogApp.controller('AppController', function ($scope, $timeout) {
+GogApp.controller('AppController', function ($scope, $rootScope, $timeout) {
 
+    $scope.gamesSold = 22576;
     $scope.aboveAverage = false;
     $scope.aboveTopTen = false;
 
