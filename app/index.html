@@ -80,7 +80,7 @@
 
                         <div class="pricepoint" ng-class="{ 'active' : aboveAverage }">
                             <i ng-class="aboveAverage ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
-                            Above average <span class="bold">(from $7.67)</span>
+                            Above average <span class="bold">(from ${{stats.average}})</span>
                         </div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                         <div class="pricepoint" ng-class="{ 'active' : aboveTopTen }">
                             <i ng-class="aboveTopTen ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
-                            Top supporter <span class="bold">(from $18.31)</span>
+                            Top supporter <span class="bold">(from ${{stats.topten}})</span>
                         </div>
                     </div>
 
@@ -132,6 +132,8 @@
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
 
-    <script src="app.min.js"></script>
+    <script src="app.js"></script>
+    <script src="js/controllers/app_controller.js"></script>
+    <script src="js/services/firebase_service.js"></script>
   </body>
 </html>

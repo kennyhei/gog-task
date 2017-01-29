@@ -1,27 +1,59 @@
 GogApp.service('FirebaseService', function ($firebaseObject) {
 
-    this.getAverage = function () {
-        // TODO, return average price point
+    // Initialize the Firebase SDK
+    var config = {
+        databaseURL: 'https://torrid-torch-7773.firebaseio.com/',
+    };
+
+    firebase.initializeApp(config);
+    var ref = firebase.database().ref('/bundle');
+    var stats = $firebaseObject(ref);
+
+    this.getStatistics = function (callback) {
+
+        stats.$loaded(function () {
+            callback(stats);
+        });
     }
 
-    this.getTopTen = function () {
-        // TODO, return top 10 price point
+    this.addPrice = function (price) {
+
+        // Update total money earned
+        stats.total += price;
+
+        // Keep array sorted
+        var index = sortedIndex(stats.prices, price);
+        stats.prices.splice(index, 0, price);
+
+        // Update bundles sold
+        stats.sold += 1;
+
+        // Update average
+        stats.average = parseFloat((stats.total / stats.prices.length).toFixed(2));
+
+        // Update top ten
+        var prices = stats.prices;
+        var index = Math.round(prices.length * 0.9) - 1;
+        stats.topten = parseFloat(((prices[index] + prices[index + 1]) / 2).toFixed(2));
+
+        stats.$save();
     }
 
-    this.getCount = function () {
-        // TODO, return number of bundles sold
-    }
+    function sortedIndex(array, value) {
 
-    this.increaseCount = function () {
-        // TODO, increase number of bundles sold by 1
-    }
+        var low = 0,
+            high = array.length;
 
-    this.updateAverage = function () {
-        // TODO, update average price point
-    }
+        while (low < high) {
+            var mid = low + high >>> 1;
+            if (array[mid] < value) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
 
-    this.updateTopTen = function () {
-        // TODO, update top ten price point
+        return low;
     }
 
 });

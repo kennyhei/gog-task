@@ -1,8 +1,56 @@
-GogApp.controller('AppController', function ($scope, $rootScope, $timeout) {
+GogApp.controller('AppController', function ($scope, $timeout, FirebaseService) {
 
-    $scope.gamesSold = 22576;
-    $scope.aboveAverage = false;
-    $scope.aboveTopTen = false;
+    $scope.aboveAverage = true;
+    $scope.aboveTopTen = true;
+
+    FirebaseService.getStatistics( function(stats) {
+        $scope.stats = stats;
+
+        $scope.slider = {
+             value: $scope.stats.topten,
+             options: {
+                 floor: 0.99,
+                 ceil: 49.99,
+                 minLimit: 0.01,
+                 maxLimit: 49.99,
+                 step: 0.01,
+                 precision: 2,
+                 ticksArray: [$scope.stats.average, $scope.stats.topten],
+                 showTicksValues: true,
+                 showSelectionBar: true,
+                 onChange: function () {
+
+                     var value = $scope.slider.value;
+
+                     if (value >= $scope.stats.average) {
+                         $scope.aboveAverage = true;
+                     } else {
+                         $scope.aboveAverage = false;
+                     }
+
+                     if (value >= $scope.stats.topten) {
+                         $scope.aboveTopTen = true;
+                     } else {
+                         $scope.aboveTopTen = false;
+                     }
+                 },
+                 translate: function(value, sliderId, label) {
+                     return '$' + value;
+                 }
+             }
+         };
+    });
+
+    $scope.buy = function () {
+
+        var value = $scope.slider.value;
+        FirebaseService.addPrice(value);
+
+        var avg = $scope.stats.average;
+        var topten = $scope.stats.topten;
+
+        $scope.slider.options.ticksArray = [avg, topten];
+    }
 
     $scope.partials = {
         menu: {
@@ -45,38 +93,4 @@ GogApp.controller('AppController', function ($scope, $rootScope, $timeout) {
             $scope.goal = goal;
         }, 200);
     }
-
-    $scope.slider = {
-        value: 2,
-        options: {
-            floor: 0.01,
-            ceil: 49.99,
-            minLimit: 0.01,
-            maxLimit: 49.99,
-            step: 0.01,
-            precision: 2,
-            ticksArray: [7.67, 18.31],
-            showTicksValues: true,
-            showSelectionBar: true,
-            onChange: function () {
-
-                var value = $scope.slider.value;
-
-                if (value >= 7.67) {
-                    $scope.aboveAverage = true;
-                } else {
-                    $scope.aboveAverage = false;
-                }
-
-                if (value >= 18.31) {
-                    $scope.aboveTopTen = true;
-                } else {
-                    $scope.aboveTopTen = false;
-                }
-            },
-            translate: function(value, sliderId, label) {
-                return '$' + value;
-            }
-        }
-    };
 });
