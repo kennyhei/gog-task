@@ -1,0 +1,558 @@
+/* app css stylesheet */
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-color: rgb(216, 217, 217);
+    font-family: Open Sans, sans-serif;
+    color: rgba(89, 89, 89, 0.9);
+
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+
+}
+
+.gradient-background {
+    position: absolute;
+    z-index: -1;
+
+    height: 100%;
+    width: 100%;
+    max-height: 90px;
+    max-width: 100%;
+    top: 55px;
+
+    background-color: #D8D8D8;
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D8D8D8), to(#B4B4B4));
+
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #B4B4B4, #D8D8D8);
+
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #B4B4B4, #D8D8D8);
+
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #B4B4B4, #D8D8D8);
+
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #B4B4B4, #D8D8D8);
+}
+
+.container {
+    max-width: 1120px;
+    width: 100%;
+    margin: auto;
+    margin-top: 90px;
+}
+
+/* Menu */
+.menu {
+    text-align: center;
+    border-bottom: 1px solid;
+    box-shadow: 0px 2px 5px #888888;
+    background-color: rgb(216, 217, 217);
+    overflow: hidden;
+
+    position: fixed;
+    width: 100%;
+    margin-top: -90px;
+    z-index: 1000;
+}
+
+.links {
+
+    list-style-type: none;
+}
+
+.links li {
+
+    display: inline;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: bold;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.search-container {
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 15px;
+    background: rgb(83, 83, 83);
+    width: 100px;
+    position: relative;
+}
+
+.search-container input {
+
+    border: none;
+    background: inherit;
+    border-radius: 15px;
+    height: 20px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 10px;
+    width: 90%;
+
+    background-color: #535353;
+    background-repeat: no-repeat;
+
+    font-family: inherit;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#535353), to(#686868));
+
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #535353, #686868);
+
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #535353, #686868);
+
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #535353, #686868);
+
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #535353, #686868);
+}
+
+.search-container input:focus {
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    color: #F0F0EE;
+    margin-left: 6px;
+    margin-top: 2px;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-weight: 100;
+}
+
+.bundle-info {
+
+    list-style-type: none;
+}
+
+.bundle-info li {
+
+    display: inline;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 13px;
+}
+
+.bundle-info .countdown {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px 10px 8px 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.dotted {
+    border-bottom: 0.1px dashed #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* BUNDLE */
+.bundle {
+    max-width: 960px;
+    height: 100%;
+    margin: 30px 80px 40px 80px;
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: rgb(191, 191, 191);
+    box-shadow: 0px 1px 1px #888888;
+
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+
+    background: rgb(230, 230, 230);
+}
+
+.bundle .showcase {
+    border-bottom: 1px solid #000;
+    border-bottom-color: rgb(191, 191, 191);
+
+    position: relative;
+    overflow: hidden;
+    background: rgb(230, 230, 230);
+    z-index: -1;
+}
+
+.bundle .showcase .game {
+    text-align: center;
+    display: inline-block;
+    margin-left: 26px;
+    font-size: 11px;
+
+    width: 280px;
+    margin-bottom: 30px;
+}
+
+.bundle .showcase .game .logo {
+    height: 130px;
+}
+
+.bundle .showcase .game .logo .logo-group {
+    margin-top: 25px;
+}
+
+.bundle .showcase .game .logo .logo-group:nth-last-child > img {
+    margin-top: 10px;
+}
+
+.bundle .showcase .game .logo .logo-group > div:not(:last-child) {
+    position: absolute;
+}
+
+.bundle .showcase .game .logo .logo-group > div:nth-child(1) {
+    z-index: 30;
+}
+
+.bundle .showcase .game .logo .logo-group > div:nth-child(2) {
+    z-index: 20;
+}
+
+.bundle .showcase .game .logo .logo-group > div:nth-child(3) {
+    z-index: 10;
+}
+
+.bundle .showcase .game .game-bg-art {
+    position: absolute;
+    z-index: -100;
+}
+
+.bundle .showcase .game .game-bg-art div {
+    opacity: 0.2;
+
+    filter: gray !important; /* IE6-9 */
+    filter: grayscale(1) !important; /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(1) !important; /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+#dd-art {
+    margin-top: -200px;
+    margin-left: -20px;
+}
+
+#bd-art {
+    margin-top: -150px;
+    margin-left: -40px;
+    z-index: -101;
+}
+
+#d2-art {
+    margin-left: -180px;
+    margin-top: -150px;
+}
+
+#d2-art div {
+    opacity: 1;
+}
+
+.bundle .showcase .game.locked .logo .logo-group div {
+    filter: gray !important; /* IE6-9 */
+    filter: grayscale(1) !important; /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(1) !important; /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+/* Disable grayscale on hover */
+.bundle .showcase .game.unlocked .logo .logo-group div {
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+.bundle .showcase .game .description {
+    padding: 10px 10px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-color: rgb(191, 191, 191);
+}
+
+.bundle .showcase .game .pricepoint {
+    margin-top: 10px;
+
+}
+
+.bundle .showcase .game .pricepoint.active {
+    color: rgb(115, 153, 0);
+}
+
+.bundle .gog-slider {
+    padding-bottom: 40px;
+}
+
+/* FOOTER */
+.footer {
+    width: 960px;
+    margin: 0 80px 0 80px;
+}
+
+.goodies {
+
+}
+
+.goodie {
+    width: 28%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    /*border: 1px solid;*/
+    padding-top: 1em;
+    display: inline-block;
+
+    text-align: center;
+}
+
+.goodie h5 {
+    margin: 10px 0 -5px 0;
+    font-size: 0.7em;
+}
+
+.goodie p {
+    font-size: 0.7em;
+}
+
+.unlockables {
+    text-align: center;
+    width: 78%;
+    margin: 0 auto;
+}
+
+.unlockables h5 {
+    margin: 10px 0 -5px 0;
+    font-size: 0.7em;
+}
+
+.unlockables p {
+    font-size: 0.7em;
+}
+
+/* Unlockables - buttons */
+.unlockables .btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.unlockables .btn-group > .btn:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.unlockables .btn-group > .btn:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.unlockables .btn-group > .btn:not(:last-child):not(:first-child) {
+  border-radius: 0;
+}
+
+.unlockables .btn-group .btn {
+
+    float: left;
+    width: 50px;
+    height: 25px;
+
+    /* Makes button borders go on top of each others */
+    margin-left: -1px;
+
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color: rgba(203, 203, 203, 0.5);
+    color: inherit;
+    font-family: inherit;
+
+    border: 1px solid;
+    border-color: rgb(166, 166, 166);
+    border-radius: 4px;
+}
+
+.unlockables .btn-group .btn:hover {
+    background-color: rgba(203, 203, 203, 1);
+}
+
+.unlockables .btn-group .btn.active {
+
+}
+
+.pull-left {
+    float: left;
+    width: 550px;
+}
+
+.pull-right {
+    float: right;
+    width: 340px;
+}
+
+header p {
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid #000;
+   border-color: rgb(191, 191, 191);
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+}
+
+header p span {
+    background: rgb(216, 217, 217);
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+/* Maybe not necessary */
+.fade{
+    -webkit-transition: opacity 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 0.2s;
+    opacity: 0;
+}
+
+.fadeIn{
+    -webkit-transition: opacity 0.1s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 0.1s;
+    opacity: 1;
+}
+
+/* Custom slider */
+.custom-slider.rzslider .rz-bar {
+    background: rgb(195, 195, 195);
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#C3C3C3), to(#CDCDCD));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #C3C3C3, #CDCDCD);
+
+    height: 13px;
+    border-radius: 16px;
+    border: 1px solid #000;
+    border-color: rgb(171, 171, 171);
+}
+.custom-slider.rzslider .rz-selection {
+    background: #CBDE22;
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D8D8D8), to(#B4B4B4));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #CBDE22, #A0C32A);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #B4B4B4, #D8D8D8);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #B4B4B4, #D8D8D8);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #B4B4B4, #D8D8D8);
+}
+
+.custom-slider.rzslider .rz-pointer {
+  width: 13px;
+  height: 25px;
+  top: auto; /* to remove the default positioning */
+  bottom: -15px;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(173, 173, 190);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.custom-slider.rzslider .rz-pointer:focus {
+    outline: none;
+}
+
+.custom-slider.rzslider {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.custom-slider.rzslider .rz-pointer:after {
+  display: none;
+}
+
+.custom-slider.rzslider .rz-bubble {
+  bottom: -40px;
+}
+
+.custom-slider.rzslider .rz-limit {
+  font-weight: bold;
+  color: orange;
+}
+
+.custom-slider.rzslider .rz-tick {
+  width: 5px;
+  height: 5px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: rgb(120, 120, 120);
+  top: 8px;
+}
+
+.custom-slider.rzslider .rz-tick.rz-selected {
+    background: rgb(110, 110, 110);
+}
+
+.custom-slider.rzslider .rz-tick-value {
+    top: -30px !important;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* CSS Sprites */
+.d2-logo-active-new, .d2-logo-active-new2, .bd-logo-active-gold, .bd-logo-active-silver, .bd-logo-inactive,
+.dd-logo-active-silver, .dd-logo-active, .dd-logo-inactive
+{ display: inline-block; background: url('img/logos.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
+
+.d2-logo-active-new { background-position: -2px -0px; width: 236px; height: 73px; }
+.d2-logo-active-new2 { background-position: -2px -75px; width: 236px; height: 73px; }
+.bd-logo-active-gold { background-position: -2px -150px; width: 206px; height: 112px; }
+.bd-logo-active-silver { background-position: -2px -264px; width: 206px; height: 112px; }
+.bd-logo-inactive { background-position: -2px -378px; width: 206px; height: 112px; }
+.dd-logo-active-silver { background-position: -2px -492px; width: 203px; height: 114px; }
+.dd-logo-active { background-position: -2px -608px; width: 203px; height: 114px; }
+.dd-logo-inactive { background-position: -2px -724px; width: 203px; height: 114px; }
+
+.d2-art-logo, .dd-art-icon, .bd-art-logo
+{ display: inline-block; background: url('img/art.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
+
+.d2-art-logo { background-position: -2px -0px; width: 576px; height: 416px; }
+.dd-art-icon { background-position: -2px -418px; width: 435px; height: 549px; }
+.bd-art-logo { background-position: -2px -969px; width: 360px; height: 497px; }

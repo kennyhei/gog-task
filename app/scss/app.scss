@@ -1,0 +1,21 @@
+/* app css stylesheet */
+
+body {
+    background-color: rgb(216, 217, 217);
+    font-family: Open Sans, sans-serif;
+    color: #595959;
+}
+
+p {
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid #000;
+   border-color: rgb(191, 191, 191);
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+}
+
+p span {
+    background:rgb(216, 217, 217);
+    padding:0 10px;
+}

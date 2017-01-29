@@ -1,0 +1,11 @@
+logs/*
+!.gitkeep
+node_modules/
+app/bower_components/**/*.*
+!app/bower_components/firebase/firebase.js
+!app/bower_components/**/*.min.js
+!app/bower_components/**/*.min.css
+tmp
+.DS_Store
+.idea
+/nbproject/private/

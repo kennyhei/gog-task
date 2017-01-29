@@ -1,0 +1,72 @@
+<!-- Goodies available -->
+<article class="goodies pull-left">
+    <header>
+        <p><span>Goodies available for free with Divinity Bundle</span></p>
+    </header>
+
+    <div class="goodie">
+        <i class="fa fa-music"></i>
+        <h5>4 soundtracks</h5>
+
+        <p>Over 3 hours of award winning music from all 3 games.</p>
+    </div>
+
+    <div class="goodie">
+        <i class="fa fa-book"></i>
+        <h5>2 short stories</h5>
+
+        <p>Prequel story for Divine Divinity and Beyond Divinity novella.</p>
+    </div>
+
+    <div class="goodie">
+        <i class="fa fa-sticky-note"></i>
+        <h5>Divinity 2 - Dev Journal</h5>
+
+        <p>144 pages long book, detailing story and art of Divinity 2.</p>
+    </div>
+
+    <div class="goodie">
+        <i class="fa fa-film"></i>
+        <h5>Making of Divinity 2</h5>
+
+        <p>40 minutes long, professional documentary about the development of Divinity 2.</p>
+    </div>
+
+    <div class="goodie">
+        <i class="fa fa-desktop"></i>
+        <h5>7 wallpapers</h5>
+
+        <p>Beautiful, hand crafted HD wallpapers with Divine, Beyond and Divinity 2 art.</p>
+    </div>
+
+    <div class="goodie">
+        <i class="fa fa-file-archive-o"></i>
+        <h5>...and more</h5>
+
+        <p>3 manuals, 56 artworks, 5 avatars, Beyond Divinity game-guide.</p>
+    </div>
+
+</article>
+
+<!-- Games sold & bonuses -->
+<article class="pull-right">
+    <header>
+        <p><span>Games sold so far</span></p>
+    </header>
+
+    <!-- Games sold -->
+    <div class="sold-counter">
+
+    </div>
+
+    <!-- Unlockable bonuses -->
+    <div class="unlockables">
+        <h5 ng-class="startFade ? 'fade' : 'fadeIn'">Reach {{goal.count}}...</h5>
+        <p>{{goal.description}}</p>
+
+        <div class="btn-group">
+            <button type="button" class="btn"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn"  ng-repeat="goal in goals" ng-click="change(goal)">{{goal.count}}</button>
+        </div>
+    </div>
+</article>

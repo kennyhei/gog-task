@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GOG Fall 2012</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.min.css">
+    <!--<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
+  </head>
+
+  <body ng-app="GogApp">
+    <div class="main" ng-controller="AppController">
+
+        <div class="gradient-background"></div>
+
+        <!-- Menu -->
+        <section class="menu" ng-include="partials.menu.url">
+        </section>
+
+        <div class="container">
+
+            <!-- Header -->
+            <section class="header" ng-include="partials.header.url"></section>
+
+            <!-- Bundle -->
+            <section class="bundle">
+
+                <!-- Games -->
+                <div class="showcase">
+
+                    <!-- Divine Divinity -->
+                    <div class="game unlocked">
+                        <div class="game-bg-art filter" id="dd-art">
+                            <div class="dd-art-icon"></div>
+                        </div>
+
+                        <div class="logo">
+                            <div class="logo-group">
+                                <div class="dd-logo-active"></div>
+                                <div class="dd-logo-active-silver"></div>
+                                <div class="dd-logo-inactive"></div>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            <span class="dotted">Divine Divinity</span> (normal price $5.99)
+                            <span class="bold">with 6 goodies and 4 language versions</span>
+                        </div>
+
+                        <div class="pricepoint active">
+                            <i class="fa fa-check-circle"></i> Below average
+                        </div>
+                    </div>
+
+                    <!-- Beyond Divinity -->
+                    <div class="game" ng-class="aboveAverage ? 'unlocked' : 'locked'">
+                        <div class="game-bg-art filter" id="bd-art">
+                            <div class="bd-art-logo"></div>
+                        </div>
+
+
+                        <div class="logo">
+                            <div class="logo-group">
+                                <div class="bd-logo-active-silver"></div>
+                                <div class="bd-logo-active-gold"></div>
+                                <div class="bd-logo-inactive"></div>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            <span class="dotted">Beyond Divinity</span> (normal price $5.99)
+                            <span class="bold">with 6 goodies and 4 language versions</span>
+                        </div>
+
+                        <div class="pricepoint" ng-class="{ 'active' : aboveAverage }">
+                            <i ng-class="aboveAverage ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
+                            Above average <span class="bold">(from $7.67)</span>
+                        </div>
+                    </div>
+
+                    <!-- Divinity II -->
+                    <div class="game" ng-class="aboveTopTen ? 'unlocked' : 'locked'">
+                        <div class="game-bg-art filter" id="d2-art">
+                            <div class="d2-art-logo"></div>
+                        </div>
+
+                        <div class="logo">
+                            <div class="logo-group">
+                                <div style="margin-top: 10px;" class="d2-logo-active-new"></div>
+                                <div style="margin-top: 10px;" class="d2-logo-active-new2"></div>
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            <span class="dotted">Divine 2</span> (preorder, normal price $19.99)
+                            <span class="bold">with 9 goodies and 7 language versions</span>
+                        </div>
+
+                        <div class="pricepoint" ng-class="{ 'active' : aboveTopTen }">
+                            <i ng-class="aboveTopTen ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
+                            Top supporter <span class="bold">(from $18.31)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Slider http://angular-slider.github.io/angularjs-slider/index.html -->
+                <div class="gog-slider">
+                    <rzslider
+                        class="custom-slider"
+                        rz-slider-model="slider.value"
+                        rz-slider-options="slider.options"></rzslider>
+                </div>
+
+            </section>
+
+            <!-- Goodies section -->
+            <section class="footer" ng-include="partials.footer.url"></section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
+
+    <script src="app.min.js"></script>
+  </body>
+</html>
+
