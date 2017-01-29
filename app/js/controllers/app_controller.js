@@ -50,6 +50,7 @@ GogApp.controller('AppController', function ($scope, $timeout, FirebaseService) 
         var topten = $scope.stats.topten;
 
         $scope.slider.options.ticksArray = [avg, topten];
+        $scope.slider.options.onChange();
     }
 
     $scope.partials = {
