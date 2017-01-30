@@ -16,7 +16,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         });
     }
 
-    this.addPrice = function (price) {
+    this.addPrice = function (price, gamesBought) {
 
         // Update total money earned
         stats.total += price;
@@ -26,7 +26,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         stats.prices.splice(index, 0, price);
 
         // Update bundles sold
-        stats.sold += 1;
+        stats.sold += gamesBought;
         stats.soldArr = updateSoldArr(stats.sold);
 
         // Update average

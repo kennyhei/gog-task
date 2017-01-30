@@ -3,6 +3,18 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     $scope.aboveAverage = true;
     $scope.aboveTopTen = true;
 
+    $scope.partials = {
+        menu: {
+            url: 'js/partials/menu.html'
+        },
+        header: {
+            url: 'js/partials/header.html'
+        },
+        footer: {
+            url: 'js/partials/footer.html'
+        }
+    }
+
     FirebaseService.getStatistics( function(stats) {
         $scope.stats = stats;
 
@@ -58,25 +70,23 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     $scope.buy = function () {
 
         var value = $scope.slider.value;
-        FirebaseService.addPrice(value);
+
+        var gamesBought = 1;
+        if ($scope.aboveAverage) {
+            gamesBought++;
+        }
+
+        if ($scope.aboveTopTen) {
+            gamesBought++;
+        }
+
+        FirebaseService.addPrice(value, gamesBought);
 
         var avg = $scope.stats.average;
         var topten = $scope.stats.topten;
 
         $scope.slider.options.ticksArray = [avg, topten];
         $scope.slider.options.onChange();
-    }
-
-    $scope.partials = {
-        menu: {
-            url: 'js/partials/menu.html'
-        },
-        header: {
-            url: 'js/partials/header.html'
-        },
-        footer: {
-            url: 'js/partials/footer.html'
-        }
     }
 
     $scope.goals = [
