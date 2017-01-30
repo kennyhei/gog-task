@@ -1,10 +1,22 @@
-GogApp.controller('AppController', function ($scope, $timeout, FirebaseService) {
+GogApp.controller('AppController', function ($scope, $timeout, $compile, FirebaseService) {
 
     $scope.aboveAverage = true;
     $scope.aboveTopTen = true;
 
     FirebaseService.getStatistics( function(stats) {
         $scope.stats = stats;
+
+        // Update digits when stats change
+        $scope.$watch('stats', function() {
+            $scope.sales = {
+                firstDigit: $scope.stats.soldArr[0],
+                secondDigit: $scope.stats.soldArr[1],
+                thirdDigit: $scope.stats.soldArr[2],
+                fourthDigit: $scope.stats.soldArr[3],
+                fifthDigit: $scope.stats.soldArr[4],
+                sixthDigit: $scope.stats.soldArr[5]
+            }
+        }, true);
 
         $scope.slider = {
              value: $scope.stats.topten,
@@ -39,6 +51,8 @@ GogApp.controller('AppController', function ($scope, $timeout, FirebaseService) 
                  }
              }
          };
+
+         createSliderTooltip();
     });
 
     $scope.buy = function () {
@@ -93,5 +107,23 @@ GogApp.controller('AppController', function ($scope, $timeout, FirebaseService) 
             $scope.startFade = false;
             $scope.goal = goal;
         }, 200);
+    }
+
+    function createSliderTooltip() {
+         var sliderTooltip = angular.element('<div></div>');
+         sliderTooltip.addClass('gog-slider-tooltip');
+
+         var sliderInput = angular.element('<div><input type="text" value="${{slider.value}}" ng-bind="slider.value">' +
+                                           '<button ng-click="buy()">Checkout now</button>');
+         var sliderInfo = angular.element('<div class="input-info"><i class="fa fa-info-circle"></i> ' +
+                                          'Click the price to type it in manually</div>');
+
+
+         sliderTooltip.append(sliderInput);
+         sliderTooltip.append(sliderInfo);
+         $compile(sliderTooltip)($scope);
+
+         var rzPointer = angular.element( document.querySelector( '.rz-pointer.rz-pointer-min' ) );
+         rzPointer.append(sliderTooltip);
     }
 });

@@ -319,7 +319,88 @@ body {
 }
 
 .bundle .gog-slider {
-    padding-bottom: 40px;
+    padding-bottom: 100px;
+}
+
+.bundle .gog-slider-tooltip {
+    position: absolute;
+    top: 30px;
+    left: -80px;
+    overflow: visible !important;
+
+    width: 170px;
+    padding: 10px 0px 10px 10px;
+    vertical-align: middle;
+    color: rgb(105, 140, 0);
+    font-size: 18px;
+    font-weight: 600;
+
+    background: rgb(195, 195, 195);
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#C3C3C3), to(#CDCDCD));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #C3C3C3, #CDCDCD);
+
+    border-radius: 4px;
+    border: 1px solid #000;
+    border-color: rgb(171, 171, 171);
+}
+
+.bundle .gog-slider-tooltip input {
+    background: transparent;
+    border: none;
+    font: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    width: 60px;
+    vertical-align: middle;
+}
+
+.bundle .gog-slider-tooltip button {
+    background: #B4CD00;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 7px 7px 7px 7px;
+    vertical-align: middle;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#B4CD00), to(#789F00));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #B4CD00, #789F00);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #B4CD00, #789F00);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #B4CD00, #789F00);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #B4CD00, #789F00);
+
+    border: 1px solid #000;
+    border-radius: 4px;
+    font: inherit;
+    color: rgb(49, 49, 49);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bundle .gog-slider-tooltip .input-info {
+    position: absolute;
+    font-size: 9px;
+    color: #888888;
+    margin-top: 15px;
+    left: 0px;
+}
+
+.bundle .gog-slider-tooltip input:focus {
+    outline: none;
 }
 
 /* FOOTER */
@@ -560,25 +641,25 @@ header p span {
 }
 
 .custom-slider.rzslider .rz-pointer:after {
-  display: none;
+    display: none;
 }
 
-.custom-slider.rzslider .rz-bubble {
-  bottom: -40px;
+.custom-slider.rzslider .rz-bubble:not(.rz-limit):not(.rz-floor):not(.rz-ceil) {
+    display: none;
 }
 
 .custom-slider.rzslider .rz-limit {
-  font-weight: bold;
-  color: orange;
+    font-weight: bold;
+    color: orange;
 }
 
 .custom-slider.rzslider .rz-tick {
-  width: 5px;
-  height: 5px;
-  margin-left: 4px;
-  border-radius: 50%;
-  background: rgb(120, 120, 120);
-  top: 8px;
+    width: 5px;
+    height: 5px;
+    margin-left: 4px;
+    border-radius: 50%;
+    background: rgb(120, 120, 120);
+    top: 8px;
 }
 
 .custom-slider.rzslider .rz-tick.rz-selected {

@@ -27,6 +27,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
 
         // Update bundles sold
         stats.sold += 1;
+        stats.soldArr = updateSoldArr(stats.sold);
 
         // Update average
         stats.average = parseFloat((stats.total / stats.prices.length).toFixed(2));
@@ -37,6 +38,22 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         stats.topten = parseFloat(((prices[index] + prices[index + 1]) / 2).toFixed(2));
 
         stats.$save();
+    }
+
+    function updateSoldArr(sold) {
+
+        var soldArr = (sold + '').split('');
+
+        if (soldArr.length < 6) {
+
+            var length = 6 - soldArr.length;
+
+            for (var i = 0; i < length; ++i) {
+                soldArr.splice(0, 0, '0');
+            }
+        }
+
+        return soldArr;
     }
 
     function sortedIndex(array, value) {
