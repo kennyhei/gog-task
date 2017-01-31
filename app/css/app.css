@@ -197,6 +197,10 @@ body {
 }
 
 .bundle .showcase {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+
     border-bottom: 1px solid #000;
     border-bottom-color: rgb(191, 191, 191);
 
@@ -204,16 +208,21 @@ body {
     overflow: hidden;
     background: rgb(230, 230, 230);
     z-index: -1;
+
+    padding-bottom: 30px;
 }
 
 .bundle .showcase .game {
     text-align: center;
-    display: inline-block;
-    margin-left: 26px;
     font-size: 11px;
+}
 
-    width: 280px;
-    margin-bottom: 30px;
+.bundle .showcase .game:first-child {
+    margin-left: 26px;
+}
+
+.bundle .showcase .game:last-child {
+    margin-right: 26px;
 }
 
 .bundle .showcase .game .logo {
@@ -405,12 +414,18 @@ body {
 
 /* FOOTER */
 .footer {
-    width: 960px;
+    max-width: 960px;
     margin: 0 80px 0 80px;
 }
 
 .goodies {
+    float: left;
+    max-width: 550px;
+}
 
+.counter {
+    width: 340px;
+    float: right;
 }
 
 .goodie {
@@ -541,16 +556,6 @@ body {
 
 .unlockables .btn-group .btn.active {
 
-}
-
-.pull-left {
-    float: left;
-    width: 550px;
-}
-
-.pull-right {
-    float: right;
-    width: 340px;
 }
 
 header p {
@@ -693,3 +698,18 @@ header p span {
 .d2-art-logo { background-position: -2px -0px; width: 576px; height: 416px; }
 .dd-art-icon { background-position: -2px -418px; width: 435px; height: 549px; }
 .bd-art-logo { background-position: -2px -969px; width: 360px; height: 497px; }
+
+/* Media queries */
+@media all and (max-width: 1070px) {
+
+    .goodies {
+        float: none;
+        margin: 0 auto;
+    }
+
+    .counter {
+        float: none;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+}
