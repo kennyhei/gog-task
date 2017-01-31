@@ -741,5 +741,6 @@ header p span {
 
     .goodie {
         width: 100%;
+        margin: 0 auto;
     }
 }
