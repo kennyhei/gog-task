@@ -713,3 +713,33 @@ header p span {
         margin-top: 40px;
     }
 }
+
+@media all and (max-width: 940px) {
+
+    .bundle .showcase {
+        display: block;
+    }
+
+    .bundle .showcase .game {
+        margin-left: 26px;
+        margin-right: 26px;
+    }
+
+    .bundle .showcase .game .game-bg-art {
+        display: none;
+    }
+}
+
+@media all and (max-width: 730px) {
+
+    .goodie {
+        width: 45%;
+    }
+}
+
+@media all and (max-width: 680px) {
+
+    .goodie {
+        width: 100%;
+    }
+}
