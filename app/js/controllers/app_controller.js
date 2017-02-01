@@ -98,21 +98,25 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     $scope.goals = [
         {
             count: '25.000',
+            threshold: 25000,
             description: '...to unlock exlusive, never before seen, trailer from Divinity: Original Sin.',
-            url: 'https://www.youtube.com/watch?v=Mea7Pa3rhJU'
+            url: 'https://www.youtube.com/watch?v=Mea7Pa3rhJU',
         },
         {
             count: '50.000',
+            threshold: 50000,
             description: '...to unlock art book for Divinity: Original Sin I and Divinity: Original Sin II.',
-            url: 'https://www.youtube.com/watch?v=3A_PEIkZ0O8'
+            url: 'https://www.youtube.com/watch?v=3A_PEIkZ0O8',
         },
         {
             count: '80.000',
+            threshold: 80000,
             description: '...to support the development of Divinity: Original Sin III.',
-            url: 'https://www.youtube.com/watch?v=HevrTza0Nxg'
+            url: 'https://www.youtube.com/watch?v=HevrTza0Nxg',
         },
         {
             count: '120.000',
+            threshold: 120000,
             description: '...to see Half-Life 3 released before the end of this year (2017).',
             url: 'https://www.youtube.com/watch?v=LBWfl0pRvgY'
         }
