@@ -44,19 +44,25 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
                  showSelectionBar: true,
                  onChange: function () {
 
-                     var value = $scope.slider.value;
+//                    var rzPointer = angular.element(document.querySelector( '.rz-pointer.rz-pointer-min'));
+//                    var sliderTooltip = angular.element(document.querySelector( '.gog-slider-tooltip'));
+//
+//                    var left = parseInt(rzPointer.css('left').split('px')[0]) - 80;
+//                    sliderTooltip.css('left', left + 'px');
 
-                     if (value >= $scope.stats.average) {
-                         $scope.aboveAverage = true;
-                     } else {
-                         $scope.aboveAverage = false;
-                     }
+                    var value = $scope.slider.value;
 
-                     if (value >= $scope.stats.topten) {
-                         $scope.aboveTopTen = true;
-                     } else {
-                         $scope.aboveTopTen = false;
-                     }
+                    if (value >= $scope.stats.average) {
+                        $scope.aboveAverage = true;
+                    } else {
+                        $scope.aboveAverage = false;
+                    }
+
+                    if (value >= $scope.stats.topten) {
+                        $scope.aboveTopTen = true;
+                    } else {
+                        $scope.aboveTopTen = false;
+                    }
                  },
                  translate: function(value, sliderId, label) {
                      return '$' + value;
@@ -92,19 +98,23 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     $scope.goals = [
         {
             count: '25.000',
-            description: '...to unlock exlusive, never before seen, trailer from Divinity: Original Sin.'
+            description: '...to unlock exlusive, never before seen, trailer from Divinity: Original Sin.',
+            url: 'https://www.youtube.com/watch?v=Mea7Pa3rhJU'
         },
         {
             count: '50.000',
-            description: '...to unlock art book for Divinity: Original Sin I and Divinity: Original Sin II.'
+            description: '...to unlock art book for Divinity: Original Sin I and Divinity: Original Sin II.',
+            url: 'https://www.youtube.com/watch?v=3A_PEIkZ0O8'
         },
         {
             count: '80.000',
-            description: '...to support the development of Divinity: Original Sin III.'
+            description: '...to support the development of Divinity: Original Sin III.',
+            url: 'https://www.youtube.com/watch?v=HevrTza0Nxg'
         },
         {
             count: '120.000',
-            description: '...to see Half-Life 3 released before the end of this year (2017).'
+            description: '...to see Half-Life 3 released before the end of this year (2017).',
+            url: 'https://www.youtube.com/watch?v=LBWfl0pRvgY'
         }
     ];
 
@@ -117,6 +127,34 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
             $scope.startFade = false;
             $scope.goal = goal;
         }, 200);
+    }
+
+    $scope.changePrevious = function () {
+
+        var goal;
+        var idx = $scope.goals.indexOf($scope.goal);
+
+        if (idx - 1 < 0) {
+            goal = $scope.goals[$scope.goals.length - 1];
+        } else {
+            goal = $scope.goals[idx - 1];
+        }
+
+        $scope.change(goal);
+    }
+
+    $scope.changeNext = function () {
+
+        var goal;
+        var idx = $scope.goals.indexOf($scope.goal);
+
+        if (idx + 1 > $scope.goals.length - 1) {
+            goal = $scope.goals[0];
+        } else {
+            goal = $scope.goals[idx + 1];
+        }
+
+        $scope.change(goal);
     }
 
     function createSliderTooltip() {
@@ -133,7 +171,15 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
          sliderTooltip.append(sliderInfo);
          $compile(sliderTooltip)($scope);
 
-         var rzPointer = angular.element( document.querySelector( '.rz-pointer.rz-pointer-min' ) );
+         var divElement = angular.element('<div></div>');
+
+         var rzPointer = angular.element(document.querySelector( '.rz-pointer.rz-pointer-min'));
+         var left = parseInt(rzPointer.css('left').split('px')[0]) - 80;
+         sliderTooltip.css('left', left + 'px');
+         console.log(sliderTooltip);
+
+         rzPointer.wrap(divElement);
+//         rzPointer.parent().append(sliderTooltip);
          rzPointer.append(sliderTooltip);
     }
 });

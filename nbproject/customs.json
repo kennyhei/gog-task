@@ -1,6 +1,8 @@
 {
     "elements": {
-        "rzslider": {}
+        "rzslider": {},
+        "youtube-video": {},
+        "ng-image-gallery": {}
     },
     "attributes": {}
 }

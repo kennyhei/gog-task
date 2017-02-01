@@ -66,6 +66,12 @@
         <h5 ng-class="startFade ? 'fade' : 'fadeIn'">Reach {{goal.count}}...</h5>
         <p>{{goal.description}}</p>
 
+        <div class="video">
+            <div class="previous" ng-click="changePrevious()"><</div>
+            <youtube-video video-url="goal.url"></youtube-video>
+            <div class="next" ng-click="changeNext()">></div>
+        </div>
+
         <div class="btn-group">
             <button type="button" ng-click="buy()" class="btn"><i class="fa fa-check"></i></button>
             <button type="button" class="btn"  ng-repeat="goal in goals" ng-click="change(goal)">{{goal.count}}</button>
