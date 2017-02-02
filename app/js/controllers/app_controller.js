@@ -97,6 +97,12 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
 
     $scope.goals = [
         {
+            count: '10.000',
+            threshold: 10000,
+            description: '...to unlock nostalgic and classy trailer from Divine Divinity.',
+            url: 'https://www.youtube.com/watch?v=bbPWtF6J01Y'
+        },
+        {
             count: '25.000',
             threshold: 25000,
             description: '...to unlock exlusive, never before seen, trailer from Divinity: Original Sin.',

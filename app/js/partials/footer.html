@@ -75,8 +75,10 @@
         </div>
 
         <div class="btn-group">
-            <button type="button" ng-click="buy()" class="btn"><i class="fa fa-check"></i></button>
-            <button type="button" class="btn"  ng-repeat="goal in goals" ng-click="change(goal)">{{goal.count}}</button>
+            <button type="button" class="btn" ng-repeat="goal in goals" ng-click="change(goal)">
+                <i class="fa fa-check" ng-if="stats.sold >= goal.threshold"></i>
+               {{stats.sold < goal.threshold ? goal.count : ''}}
+            </button>
         </div>
     </div>
 </article>
