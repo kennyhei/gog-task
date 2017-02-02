@@ -155,11 +155,13 @@ body {
     list-style-type: none;
 }
 
-.bundle-info li {
+.bundle-info div {
 
-    display: inline;
+    display: inline-block;
     padding-left: 1em;
     padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     font-size: 13px;
 }
 
@@ -183,7 +185,7 @@ body {
 .bundle {
     max-width: 960px;
     height: 100%;
-    margin: 30px 80px 40px 80px;
+    margin: 20px 80px 40px 80px;
     border: 1px solid;
     border-radius: 6px;
     border-color: rgb(191, 191, 191);
