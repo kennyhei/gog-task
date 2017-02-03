@@ -614,15 +614,15 @@ header p span {
     background-repeat: no-repeat;
 
     /* Safari 4-5, Chrome 1-9 */
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D8D8D8), to(#B4B4B4));
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CBDE22), to(#A0C32A));
     /* Safari 5.1, Chrome 10+ */
     background: -webkit-linear-gradient(top, #CBDE22, #A0C32A);
     /* Firefox 3.6+ */
-    background: -moz-linear-gradient(top, #B4B4B4, #D8D8D8);
+    background: -moz-linear-gradient(top, #CBDE22, #A0C32A);
     /* IE 10 */
-    background: -ms-linear-gradient(top, #B4B4B4, #D8D8D8);
+    background: -ms-linear-gradient(top, #CBDE22, #A0C32A);
     /* Opera 11.10+ */
-    background: -o-linear-gradient(top, #B4B4B4, #D8D8D8);
+    background: -o-linear-gradient(top, #CBDE22, #A0C32A);
 }
 
 .custom-slider.rzslider .rz-pointer {
