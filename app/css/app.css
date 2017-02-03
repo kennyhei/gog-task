@@ -426,7 +426,7 @@ body {
 }
 
 .counter {
-    max-width: 340px;
+    width: 340px;
     float: right;
 }
 
@@ -775,6 +775,8 @@ iframe {
         float: none;
         margin: 0 auto;
         margin-top: 40px;
+        max-width: 340px;
+        width: inherit;
     }
 }
 
@@ -820,5 +822,12 @@ iframe {
 
     .footer {
         margin: 0 20px 0 20px;
+    }
+}
+
+@media all and (max-width: 380px) {
+
+    .footer {
+        margin: 0 5px 0 5px;
     }
 }
