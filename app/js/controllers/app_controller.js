@@ -128,21 +128,21 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
         }
     ];
 
-    $scope.goal = $scope.goals[0];
+    $scope.activeGoal = $scope.goals[0];
 
     $scope.change = function (goal) {
         $scope.startFade = true;
 
         $timeout(function () {
             $scope.startFade = false;
-            $scope.goal = goal;
+            $scope.activeGoal = goal;
         }, 200);
     }
 
     $scope.changePrevious = function () {
 
         var goal;
-        var idx = $scope.goals.indexOf($scope.goal);
+        var idx = $scope.goals.indexOf($scope.activeGoal);
 
         if (idx - 1 < 0) {
             goal = $scope.goals[$scope.goals.length - 1];
@@ -156,7 +156,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     $scope.changeNext = function () {
 
         var goal;
-        var idx = $scope.goals.indexOf($scope.goal);
+        var idx = $scope.goals.indexOf($scope.activeGoal);
 
         if (idx + 1 > $scope.goals.length - 1) {
             goal = $scope.goals[0];

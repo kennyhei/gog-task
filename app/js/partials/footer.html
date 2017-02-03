@@ -63,19 +63,19 @@
 
     <!-- Unlockable bonuses -->
     <div class="unlockables">
-        <h5 ng-class="startFade ? 'fade' : 'fadeIn'">Reach {{goal.count}}...</h5>
-        <p>{{goal.description}}</p>
+        <h5 ng-class="startFade ? 'fade' : 'fadeIn'">Reach {{activeGoal.count}}...</h5>
+        <p>{{activeGoal.description}}</p>
 
         <div class="video">
             <div class="previous" ng-click="changePrevious()">&lt;</div>
-            <div ng-class="{ 'video-container locked' : stats.sold < goal.threshold  }">
-                <youtube-video video-url="goal.url"></youtube-video>
+            <div ng-class="{ 'video-container locked' : stats.sold < activeGoal.threshold  }">
+                <youtube-video video-url="activeGoal.url"></youtube-video>
             </div>
             <div class="next" ng-click="changeNext()">&gt;</div>
         </div>
 
         <div class="btn-group">
-            <button type="button" class="btn" ng-repeat="goal in goals" ng-click="change(goal)">
+            <button type="button" class="btn" ng-repeat="goal in goals" ng-click="change(goal)" ng-class="{ active: activeGoal === goal }">
                 <i class="fa fa-check" ng-if="stats.sold >= goal.threshold"></i>
                {{stats.sold < goal.threshold ? goal.count : ''}}
             </button>
