@@ -1,4 +1,4 @@
-GogApp.controller('AppController', function ($scope, $timeout, $compile, FirebaseService) {
+GogApp.controller('AppController', function ($scope, $timeout, $window, FirebaseService) {
 
     $scope.aboveAverage = true;
     $scope.aboveTopTen = true;
@@ -48,13 +48,13 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
 
         $scope.$watch('slider.options.value', function (newVal, oldVal) {
             $scope.slider.setValue(parseFloat(newVal));
-
-            var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
-            var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
-            var left = pointer.css('left');
-            sliderTooltip.css('left', left);
-
+            setupSliderTooltip();
         });
+
+       angular.element($window).bind('resize', function() {
+            setupSliderTooltip();
+            $scope.$digest();
+       });
 
         createSliderTooltip();
     });
@@ -177,19 +177,11 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
          var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
          sliderTooltip.css('display', 'block');
 
-         var sliderDiv = angular.element(document.querySelector( '.gog-slider'));
-         var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
-         var left = pointer.css('left');
-         sliderTooltip.css('left', left);
-
-         sliderDiv.append(sliderTooltip);
+         setupSliderTooltip();
     }
 
     function updateSlider (event) {
-        var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
-        var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
-        var left = pointer.css('left');
-        sliderTooltip.css('left', left);
+        setupSliderTooltip();
 
         $scope.$apply(function () {
             $scope.slider.options.value = event.newValue;
@@ -206,5 +198,25 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
                 $scope.aboveTopTen = false;
             }
         });
+    }
+
+    function setupSliderTooltip () {
+
+        var gogSlider = angular.element(document.querySelector('.gog-slider'));
+        var gogSliderWidth = parseFloat(gogSlider.css('width').split('px')[0]);
+
+        var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
+        var left = parseFloat(pointer.css('left').split('px')[0]);
+
+        var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
+        var sliderTooltipWidth = parseFloat(sliderTooltip.css('width').split('px')[0]);
+
+        if (sliderTooltipWidth + left + 25 >= gogSliderWidth) {
+            sliderTooltip.css('left', gogSliderWidth - sliderTooltipWidth - 20 + 'px');
+        } else if (left < 8) {
+            sliderTooltip.css('left', '8px');
+        } else {
+            sliderTooltip.css('left', left + 'px');
+        }
     }
 });
