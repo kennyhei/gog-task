@@ -338,7 +338,7 @@ body {
     left: -80px;
     overflow: visible !important;
 
-    width: 170px;
+    width: 180px;
     padding: 10px 0px 10px 10px;
     vertical-align: middle;
     color: rgb(105, 140, 0);
@@ -364,6 +364,12 @@ body {
     border-color: rgb(171, 171, 171);
 }
 
+.bundle .gog-slider-tooltip label {
+    position: relative;
+    top: 2px;
+    left: 1px;
+}
+
 .bundle .gog-slider-tooltip input {
     background: transparent;
     border: none;
@@ -371,7 +377,7 @@ body {
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
-    width: 60px;
+    width: 50px;
     vertical-align: middle;
     display: inline-block !important;
 }
@@ -659,7 +665,7 @@ header p span {
     border-top-right-radius: 3px !important;
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    margin-left: -8px !important;
+    margin-left: -4px !important;
     margin-top: -6px !important;
     background-color: rgb(238, 238, 238) !important;
     background-image: none !important;

@@ -33,6 +33,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         stats.average = parseFloat((stats.total / stats.prices.length).toFixed(2));
 
         // Update top ten
+        // Not really sure if this is how its calculated..
         var prices = stats.prices;
         var index = Math.round(prices.length * 0.9) - 1;
         stats.topten = parseFloat(((prices[index] + prices[index + 1]) / 2).toFixed(2));

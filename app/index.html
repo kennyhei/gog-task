@@ -116,7 +116,8 @@
                     <div class="gog-slider-tooltip" style="display: none; position: relative;">
                         <div class="tooltip-arrow"></div>
                         <div>
-                            <input type="text" ng-model="slider.options.value">
+                            <label for="price">$</label>
+                            <input type="text" name="price" ng-model="slider.options.value">
                             <button ng-click="buy()">Checkout now</button>
                         </div>
                         <div class="input-info">
