@@ -337,7 +337,7 @@ body {
 .bundle .gog-slider-tooltip {
     position: absolute;
     left: -94px;
-    top: 40px !important;
+    top: 32px;
     overflow: visible !important;
 
     width: 180px;
@@ -855,6 +855,7 @@ iframe {
     height: 0;
     border-color: transparent;
     border-style: solid;
+    z-index: -1;
 }
 
 .gog-slider-tooltip .tooltip-arrow {

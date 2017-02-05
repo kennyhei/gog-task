@@ -206,10 +206,10 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
 
         if (secondLeft - firstLeft < 70) {
             tickLabelFirst.css('top', '25px');
-            sliderTooltip.css('top', '15px');
+            sliderTooltip.css('top', '55px');
         } else {
             tickLabelFirst.css('top', '-23px');
-            sliderTooltip.css('top', '0');
+            sliderTooltip.css('top', '32px');
         }
     }
 });
