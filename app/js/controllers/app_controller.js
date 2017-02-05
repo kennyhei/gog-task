@@ -1,8 +1,5 @@
 GogApp.controller('AppController', function ($scope, $timeout, $window, FirebaseService) {
 
-    $scope.aboveAverage = true;
-    $scope.aboveTopTen = true;
-
     $scope.partials = {
         menu: {
             url: 'js/partials/menu.html'
@@ -43,7 +40,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         });
 
         $scope.slider.on('change', function (event) {
-            updateSlider(event);
+            updateSliderValue(event);
         });
 
         $scope.$watch('slider.options.value', function (newVal, oldVal) {
@@ -74,12 +71,14 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
             $scope.slider.options.value = 0.99;
         }
 
+        value = $scope.slider.getValue();
+
         var gamesBought = 1;
-        if ($scope.aboveAverage) {
+        if (value >= $scope.stats.average) {
             gamesBought++;
         }
 
-        if ($scope.aboveTopTen) {
+        if (value >= $scope.stats.topten) {
             gamesBought++;
         }
 
@@ -97,7 +96,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         // For some reason refreshing the slider disables change event listener
         // so setup it again
         $scope.slider.on('change', function (event) {
-            updateSlider(event);
+            updateSliderValue(event);
         });
     }
 
@@ -182,22 +181,10 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         pointer.append(sliderTooltip);
     }
 
-    function updateSlider (event) {
+    function updateSliderValue (event) {
 
         $scope.$apply(function () {
             $scope.slider.options.value = event.newValue;
-
-            if (event.newValue >= $scope.stats.average) {
-                $scope.aboveAverage = true;
-            } else {
-                $scope.aboveAverage = false;
-            }
-
-            if (event.newValue >= $scope.stats.topten) {
-                $scope.aboveTopTen = true;
-            } else {
-                $scope.aboveTopTen = false;
-            }
         });
     }
 

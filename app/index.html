@@ -54,7 +54,7 @@
                     </div>
 
                     <!-- Beyond Divinity -->
-                    <div class="game" ng-class="aboveAverage ? 'unlocked' : 'locked'">
+                    <div class="game" ng-class="slider.options.value >= stats.average ? 'unlocked' : 'locked'">
                         <div class="game-bg-art filter" id="bd-art">
                             <div class="bd-art-logo"></div>
                         </div>
@@ -71,14 +71,14 @@
                             <span class="bold">with 6 goodies and 4 language versions</span>
                         </div>
 
-                        <div class="pricepoint" ng-class="{ 'active' : aboveAverage }">
-                            <i ng-class="aboveAverage ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
+                        <div class="pricepoint" ng-class="{ 'active' : slider.options.value >= stats.average }">
+                            <i ng-class="slider.options.value >= stats.average ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
                             Above average <span class="bold">(from ${{stats.average}})</span>
                         </div>
                     </div>
 
                     <!-- Divinity II -->
-                    <div class="game" ng-class="aboveTopTen ? 'unlocked' : 'locked'">
+                    <div class="game" ng-class="slider.options.value >= stats.topten ? 'unlocked' : 'locked'">
                         <div class="game-bg-art filter" id="d2-art">
                             <div class="d2-art-logo"></div>
                         </div>
@@ -94,8 +94,8 @@
                             <span class="bold">with 9 goodies and 7 language versions</span>
                         </div>
 
-                        <div class="pricepoint" ng-class="{ 'active' : aboveTopTen }">
-                            <i ng-class="aboveTopTen ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
+                        <div class="pricepoint" ng-class="{ 'active' : slider.options.value >= stats.topten }">
+                            <i ng-class="slider.options.value >= stats.topten ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
                             Top supporter <span class="bold">(from ${{stats.topten}})</span>
                         </div>
                     </div>
