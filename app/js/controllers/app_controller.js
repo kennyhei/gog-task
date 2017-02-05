@@ -39,7 +39,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
             tooltip_position:'bottom',
             ticks: [0.99, $scope.stats.average, $scope.stats.topten, 49.99],
             ticks_positions: [0, ($scope.stats.average / 49.99) * 100, ($scope.stats.topten / 49.99) * 100, 100],
-            ticks_labels: ['$0.99', $scope.stats.average, $scope.stats.topten, '$49.99'],
+            ticks_labels: ['$0.99', '$' + $scope.stats.average + ' (Average)', '$' + $scope.stats.topten + ' (Top 10%)', '$49.99'],
         });
 
         $scope.slider.on('change', function (event) {
@@ -90,7 +90,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
 
         $scope.slider.setAttribute('ticks', [0.99, avg, topten, 49.99]);
         $scope.slider.setAttribute('ticks_positions', [0, (avg / 49.99) * 100, (topten / 49.99) * 100, 100]);
-        $scope.slider.setAttribute('ticks_labels', ['$0.99', avg, topten, '$49.99']);
+        $scope.slider.setAttribute('ticks_labels', ['$0.99', '$' + avg + ' (Average)', '$' + topten + ' (Top 10%)', '$49.99']);
         $scope.slider.refresh();
 
         // For some reason refreshing the slider disables change event listener
