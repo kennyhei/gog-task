@@ -30,52 +30,49 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
             }
         }, true);
 
-        $scope.slider = {
-             value: $scope.stats.topten,
-             options: {
-                 floor: 0.99,
-                 ceil: 49.99,
-                 minLimit: 0.01,
-                 maxLimit: 49.99,
-                 step: 0.01,
-                 precision: 2,
-                 ticksArray: [$scope.stats.average, $scope.stats.topten],
-                 showTicksValues: true,
-                 showSelectionBar: true,
-                 onChange: function () {
+        $scope.slider = new Slider("#ex1", {
+            min: 0.99,
+            max: 49.99,
+            step: 0.01,
+            value: $scope.stats.topten,
+            tooltip: 'hide',
+            tooltip_position:'bottom',
+            ticks: [0.99, $scope.stats.average, $scope.stats.topten, 49.99],
+            ticks_positions: [0, ($scope.stats.average / 49.99) * 100, ($scope.stats.topten / 49.99) * 100, 100],
+            ticks_labels: ['$0.99', $scope.stats.average, $scope.stats.topten, '$49.99'],
+        });
 
-//                    var rzPointer = angular.element(document.querySelector( '.rz-pointer.rz-pointer-min'));
-//                    var sliderTooltip = angular.element(document.querySelector( '.gog-slider-tooltip'));
-//
-//                    var left = parseInt(rzPointer.css('left').split('px')[0]) - 80;
-//                    sliderTooltip.css('left', left + 'px');
+        $scope.slider.on('change', function (event) {
+            updateSlider(event);
+        });
 
-                    var value = $scope.slider.value;
+        $scope.$watch('slider.options.value', function (newVal, oldVal) {
+            $scope.slider.setValue(parseFloat(newVal));
 
-                    if (value >= $scope.stats.average) {
-                        $scope.aboveAverage = true;
-                    } else {
-                        $scope.aboveAverage = false;
-                    }
+            var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
+            var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
+            var left = pointer.css('left');
+            sliderTooltip.css('left', left);
 
-                    if (value >= $scope.stats.topten) {
-                        $scope.aboveTopTen = true;
-                    } else {
-                        $scope.aboveTopTen = false;
-                    }
-                 },
-                 translate: function(value, sliderId, label) {
-                     return '$' + value;
-                 }
-             }
-         };
+        });
 
-         createSliderTooltip();
+        createSliderTooltip();
     });
 
     $scope.buy = function () {
 
-        var value = $scope.slider.value;
+        var value = $scope.slider.getValue();
+        $scope.slider.options.value = value;
+
+        if (value > 49.99) {
+            $scope.slider.setValue(49.99);
+            $scope.slider.options.value = 49.99;
+        }
+
+        if (value < 0.99) {
+            $scope.slider.setValue(0.99);
+            $scope.slider.options.value = 0.99;
+        }
 
         var gamesBought = 1;
         if ($scope.aboveAverage) {
@@ -91,8 +88,16 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
         var avg = $scope.stats.average;
         var topten = $scope.stats.topten;
 
-        $scope.slider.options.ticksArray = [avg, topten];
-        $scope.slider.options.onChange();
+        $scope.slider.setAttribute('ticks', [0.99, avg, topten, 49.99]);
+        $scope.slider.setAttribute('ticks_positions', [0, (avg / 49.99) * 100, (topten / 49.99) * 100, 100]);
+        $scope.slider.setAttribute('ticks_labels', ['$0.99', avg, topten, '$49.99']);
+        $scope.slider.refresh();
+
+        // For some reason refreshing the slider disables change event listener
+        // so setup it again
+        $scope.slider.on('change', function (event) {
+            updateSlider(event);
+        });
     }
 
     $scope.goals = [
@@ -168,28 +173,38 @@ GogApp.controller('AppController', function ($scope, $timeout, $compile, Firebas
     }
 
     function createSliderTooltip() {
-         var sliderTooltip = angular.element('<div></div>');
-         sliderTooltip.addClass('gog-slider-tooltip');
 
-         var sliderInput = angular.element('<div><input type="text" value="${{slider.value}}" ng-bind="slider.value">' +
-                                           '<button ng-click="buy()">Checkout now</button>');
-         var sliderInfo = angular.element('<div class="input-info"><i class="fa fa-info-circle"></i> ' +
-                                          'Click the price to type it in manually</div>');
+         var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
+         sliderTooltip.css('display', 'block');
 
+         var sliderDiv = angular.element(document.querySelector( '.gog-slider'));
+         var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
+         var left = pointer.css('left');
+         sliderTooltip.css('left', left);
 
-         sliderTooltip.append(sliderInput);
-         sliderTooltip.append(sliderInfo);
-         $compile(sliderTooltip)($scope);
+         sliderDiv.append(sliderTooltip);
+    }
 
-         var divElement = angular.element('<div></div>');
+    function updateSlider (event) {
+        var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
+        var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
+        var left = pointer.css('left');
+        sliderTooltip.css('left', left);
 
-         var rzPointer = angular.element(document.querySelector( '.rz-pointer.rz-pointer-min'));
-         var left = parseInt(rzPointer.css('left').split('px')[0]) - 80;
-         sliderTooltip.css('left', left + 'px');
-         console.log(sliderTooltip);
+        $scope.$apply(function () {
+            $scope.slider.options.value = event.newValue;
 
-         rzPointer.wrap(divElement);
-//         rzPointer.parent().append(sliderTooltip);
-         rzPointer.append(sliderTooltip);
+            if (event.newValue >= $scope.stats.average) {
+                $scope.aboveAverage = true;
+            } else {
+                $scope.aboveAverage = false;
+            }
+
+            if (event.newValue >= $scope.stats.topten) {
+                $scope.aboveTopTen = true;
+            } else {
+                $scope.aboveTopTen = false;
+            }
+        });
     }
 });

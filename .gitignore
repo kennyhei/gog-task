@@ -5,6 +5,7 @@ app/bower_components/**/*.*
 !app/bower_components/firebase/firebase.js
 !app/bower_components/**/*.min.js
 !app/bower_components/**/*.min.css
+!app/bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.js
 tmp
 .DS_Store
 .idea
