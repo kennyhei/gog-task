@@ -652,6 +652,20 @@ header p span {
   border-top-right-radius: 3px;
 }
 
+.slider-handle {
+    width: 13px !important;
+    height: 25px !important;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    margin-left: -8px !important;
+    margin-top: -6px !important;
+    background-color: rgb(238, 238, 238) !important;
+    background-image: none !important;
+    border: 1px solid rgb(173, 173, 190) !important;
+}
+
 .custom-slider.rzslider .rz-pointer:focus {
     outline: none;
 }
@@ -812,20 +826,23 @@ iframe {
     border-style: solid;
 }
 
-.tooltip.top .tooltip-arrow {
-    bottom: 0;
+.gog-slider-tooltip .tooltip-arrow {
+    top: -9px;
     left: 50%;
     margin-left: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: #000;
-}
+    border-width: 0 10px 10px;
+    border-bottom-color: rgb(195, 195, 195);
 
-.tooltip.bottom .tooltip-arrow {
-    top: 0;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: #000;
+    /* Safari 4-5, Chrome 1-9 */
+    border-bottom-color: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#C3C3C3), to(#CDCDCD));
+    /* Safari 5.1, Chrome 10+ */
+    border-bottom-color: -webkit-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Firefox 3.6+ */
+    border-bottom-color: -moz-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* IE 10 */
+    border-bottom-color: -ms-linear-gradient(top, #C3C3C3, #CDCDCD);
+    /* Opera 11.10+ */
+    border-bottom-color: -o-linear-gradient(top, #C3C3C3, #CDCDCD);
 }
 
 .tooltip-inner {
