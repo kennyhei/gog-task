@@ -85,7 +85,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
     }
 
     function initialize(stats) {
-        console.log('helou');
+
         if (stats.total === undefined) {
             stats.total = 0;
         }

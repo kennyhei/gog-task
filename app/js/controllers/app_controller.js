@@ -48,11 +48,9 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
 
         $scope.$watch('slider.options.value', function (newVal, oldVal) {
             $scope.slider.setValue(parseFloat(newVal));
-            setupTooltipPosition();
         });
 
        angular.element($window).bind('resize', function() {
-            setupTooltipPosition();
             setupTickLabelPosition();
             $scope.$digest();
        });
@@ -180,11 +178,11 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
          var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
          sliderTooltip.css('display', 'block');
 
-         setupTooltipPosition();
+        var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
+        pointer.append(sliderTooltip);
     }
 
     function updateSlider (event) {
-        setupTooltipPosition();
 
         $scope.$apply(function () {
             $scope.slider.options.value = event.newValue;
@@ -209,26 +207,6 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         $scope.slider.setAttribute('ticks_positions', [0, ($scope.stats.average / 49.99) * 100, ($scope.stats.topten / 49.99) * 100, 100]);
         $scope.slider.setAttribute('ticks_labels', ['$0.99', '$' + avg + ' (Average)', '$' + topten + ' (Top 10%)', '$49.99']);
         $scope.slider.refresh();
-    }
-
-    function setupTooltipPosition () {
-
-        var gogSlider = angular.element(document.querySelector('.gog-slider'));
-        var gogSliderWidth = parseFloat(gogSlider.css('width').split('px')[0]);
-
-        var pointer = angular.element(document.querySelector( '.slider-handle.min-slider-handle.round'));
-        var left = parseFloat(pointer.css('left').split('px')[0]);
-
-        var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
-        var sliderTooltipWidth = parseFloat(sliderTooltip.css('width').split('px')[0]);
-
-        if (sliderTooltipWidth + left + 25 >= gogSliderWidth) {
-            sliderTooltip.css('left', gogSliderWidth - sliderTooltipWidth - 20 + 'px');
-        } else if (left < 8) {
-            sliderTooltip.css('left', '8px');
-        } else {
-            sliderTooltip.css('left', left + 'px');
-        }
     }
 
     function setupTickLabelPosition () {

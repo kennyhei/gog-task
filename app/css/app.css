@@ -331,12 +331,13 @@ body {
 
 .bundle .gog-slider {
     padding-top: 10px;
-    padding-bottom: 40px;
+    padding-bottom: 100px;
 }
 
 .bundle .gog-slider-tooltip {
     position: absolute;
-    left: -80px;
+    left: -94px;
+    top: 40px !important;
     overflow: visible !important;
 
     width: 180px;
@@ -934,13 +935,13 @@ iframe {
 }
 
 .slider .slider-tick-label-container .slider-tick-label:first-child {
-    left: -40px !important;
+    left: -30px !important;
     top: -1px;
 }
 
 .slider .slider-tick-label-container .slider-tick-label:last-child {
     left: initial !important;
-    right: -170px;
+    right: -160px;
     top: -1px;
 }
 
