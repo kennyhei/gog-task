@@ -48,15 +48,17 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
 
         $scope.$watch('slider.options.value', function (newVal, oldVal) {
             $scope.slider.setValue(parseFloat(newVal));
-            setupSliderTooltip();
+            setupTooltipPosition();
         });
 
        angular.element($window).bind('resize', function() {
-            setupSliderTooltip();
+            setupTooltipPosition();
+            setupTickLabelPosition();
             $scope.$digest();
        });
 
         createSliderTooltip();
+        setupTickLabelPosition();
     });
 
     $scope.buy = function () {
@@ -88,10 +90,11 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         var avg = $scope.stats.average;
         var topten = $scope.stats.topten;
 
-        $scope.slider.setAttribute('ticks', [0.99, avg, topten, 49.99]);
-        $scope.slider.setAttribute('ticks_positions', [0, (avg / 49.99) * 100, (topten / 49.99) * 100, 100]);
-        $scope.slider.setAttribute('ticks_labels', ['$0.99', '$' + avg + ' (Average)', '$' + topten + ' (Top 10%)', '$49.99']);
-        $scope.slider.refresh();
+        // Update slider attributes and refresh slider
+        refreshSlider(avg, topten)
+
+        // Setup tick label positions in case of overlapping
+        setupTickLabelPosition();
 
         // For some reason refreshing the slider disables change event listener
         // so setup it again
@@ -177,11 +180,11 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
          var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
          sliderTooltip.css('display', 'block');
 
-         setupSliderTooltip();
+         setupTooltipPosition();
     }
 
     function updateSlider (event) {
-        setupSliderTooltip();
+        setupTooltipPosition();
 
         $scope.$apply(function () {
             $scope.slider.options.value = event.newValue;
@@ -200,7 +203,15 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         });
     }
 
-    function setupSliderTooltip () {
+    function refreshSlider(avg, topten) {
+
+        $scope.slider.setAttribute('ticks', [0.99, avg, topten, 49.99]);
+        $scope.slider.setAttribute('ticks_positions', [0, ($scope.stats.average / 49.99) * 100, ($scope.stats.topten / 49.99) * 100, 100]);
+        $scope.slider.setAttribute('ticks_labels', ['$0.99', '$' + avg + ' (Average)', '$' + topten + ' (Top 10%)', '$49.99']);
+        $scope.slider.refresh();
+    }
+
+    function setupTooltipPosition () {
 
         var gogSlider = angular.element(document.querySelector('.gog-slider'));
         var gogSliderWidth = parseFloat(gogSlider.css('width').split('px')[0]);
@@ -217,6 +228,23 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
             sliderTooltip.css('left', '8px');
         } else {
             sliderTooltip.css('left', left + 'px');
+        }
+    }
+
+    function setupTickLabelPosition () {
+        var tickLabelFirst = angular.element(document.querySelectorAll('.slider-tick-label')[1]);
+        var tickLabelSecond = angular.element(document.querySelectorAll('.slider-tick-label')[2]);
+        var sliderTooltip = angular.element(document.querySelector('.gog-slider-tooltip'));
+
+        var firstLeft = tickLabelFirst.css('left').split('px')[0];
+        var secondLeft = tickLabelSecond.css('left').split('px')[0];
+
+        if (secondLeft - firstLeft < 70) {
+            tickLabelFirst.css('top', '25px');
+            sliderTooltip.css('top', '15px');
+        } else {
+            tickLabelFirst.css('top', '-23px');
+            sliderTooltip.css('top', '0');
         }
     }
 });

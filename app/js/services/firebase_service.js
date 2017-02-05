@@ -12,6 +12,7 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
     this.getStatistics = function (callback) {
 
         stats.$loaded(function () {
+            initialize(stats);
             callback(stats);
         });
     }
@@ -36,7 +37,16 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         // Not really sure if this is how its calculated..
         var prices = stats.prices;
         var index = Math.round(prices.length * 0.9) - 1;
-        stats.topten = parseFloat(((prices[index] + prices[index + 1]) / 2).toFixed(2));
+
+        if (index === stats.prices.length - 1) {
+            index -= 1;
+        }
+
+        if (stats.prices.length === 1) {
+            stats.topten = parseFloat(prices[0].toFixed(2));
+        } else {
+            stats.topten = parseFloat(((prices[index] + prices[index + 1]) / 2).toFixed(2));
+        }
 
         stats.$save();
     }
@@ -72,6 +82,33 @@ GogApp.service('FirebaseService', function ($firebaseObject) {
         }
 
         return low;
+    }
+
+    function initialize(stats) {
+        console.log('helou');
+        if (stats.total === undefined) {
+            stats.total = 0;
+        }
+
+        if (stats.prices === undefined) {
+            stats.prices = [];
+        }
+
+        if (stats.sold === undefined) {
+            stats.sold = 0;
+        }
+
+        if (stats.soldArr === undefined) {
+            stats.soldArr = {};
+        }
+
+        if (stats.average === undefined) {
+            stats.average = 0.99;
+        }
+
+        if (stats.topten === undefined) {
+            stats.topten = 0.99;
+        }
     }
 
 });
