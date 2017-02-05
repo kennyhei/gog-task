@@ -13,8 +13,6 @@ GogApp.directive('validNumber', function () {
                 var clean = val.replace(/[^0-9\.]/g, '');
                 var decimalCheck = clean.split('.');
 
-                console.log(decimalCheck);
-
                 if (!angular.isUndefined(decimalCheck[1])) {
                     decimalCheck[1] = decimalCheck[1].slice(0, 2);
                     clean = decimalCheck[0] + '.' + decimalCheck[1];
