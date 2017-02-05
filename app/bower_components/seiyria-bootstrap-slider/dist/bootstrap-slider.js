@@ -1174,7 +1174,9 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 			_mousedown: function _mousedown(ev) {
 
                                 // Custom code, DO NOT TOUCH
-                                if ($.contains( $('.slider-handle.min-slider-handle.round')[0], ev.srcElement)) {
+                                var handleElement = $('.slider-handle.min-slider-handle.round')[0];
+
+                                if ($.contains(handleElement, ev.srcElement) || $.contains(handleElement, ev.target)) {
                                     return true;
                                 }
 
