@@ -385,22 +385,23 @@ body {
 }
 
 .bundle .gog-slider-tooltip button {
-    background: #B4CD00;
-    background-repeat: no-repeat;
     cursor: pointer;
     padding: 7px 7px 7px 7px;
     vertical-align: middle;
 
+    background: #D5E34A;
+    background-repeat: no-repeat;
+
     /* Safari 4-5, Chrome 1-9 */
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#B4CD00), to(#789F00));
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D5E34A), to(#A2C529));
     /* Safari 5.1, Chrome 10+ */
-    background: -webkit-linear-gradient(top, #B4CD00, #789F00);
+    background: -webkit-linear-gradient(top, #D5E34A, #A2C529);
     /* Firefox 3.6+ */
-    background: -moz-linear-gradient(top, #B4CD00, #789F00);
+    background: -moz-linear-gradient(top, #D5E34A, #A2C529);
     /* IE 10 */
-    background: -ms-linear-gradient(top, #B4CD00, #789F00);
+    background: -ms-linear-gradient(top, #D5E34A, #A2C529);
     /* Opera 11.10+ */
-    background: -o-linear-gradient(top, #B4CD00, #789F00);
+    background: -o-linear-gradient(top, #D5E34A, #A2C529);
 
     border: 1px solid #000;
     border-radius: 4px;
@@ -408,6 +409,24 @@ body {
     color: rgb(49, 49, 49);
     font-size: 12px;
     font-weight: 600;
+}
+
+.bundle .gog-slider-tooltip button:hover {
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CBDE22), to(#88A523));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #CBDE22, #88A523);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #CBDE22, #88A523);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #CBDE22, #88A523);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #CBDE22, #88A523);
+}
+
+.bundle .gog-slider-tooltip button:focus {
+    outline: none;
 }
 
 .bundle .gog-slider-tooltip .input-info {
@@ -663,14 +682,18 @@ header p span {
 .slider-handle {
     width: 13px !important;
     height: 25px !important;
+
     border-top-left-radius: 3px !important;
     border-top-right-radius: 3px !important;
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
+
     margin-left: -4px !important;
     margin-top: -6px !important;
+
     background-color: rgb(238, 238, 238) !important;
     background-image: none !important;
+
     border: 1px solid rgb(173, 173, 190) !important;
 }
 

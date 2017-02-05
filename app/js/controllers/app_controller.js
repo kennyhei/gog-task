@@ -105,7 +105,7 @@ GogApp.controller('AppController', function ($scope, $timeout, $window, Firebase
         {
             count: '10.000',
             threshold: 10000,
-            description: '...to unlock nostalgic and classy trailer from Divine Divinity.',
+            description: '...to unlock nostalgic and classic trailer of Divine Divinity.',
             url: 'https://www.youtube.com/watch?v=bbPWtF6J01Y'
         },
         {
