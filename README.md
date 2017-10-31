@@ -5,7 +5,7 @@ Demo: http://gog-task.herokuapp.com/
 
 ## Install Dependencies
 
-If necessary, download and install Node.js (https://nodejs.org) and Yarn (https://yarnpkg.com).
+If necessary, download and install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com).
 Install dependencies with `yarn install`.
 
 ## Running application
