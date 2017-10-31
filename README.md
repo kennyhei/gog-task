@@ -3,7 +3,7 @@
 GOG.com Fall 2012 Front page
 Demo: http://gog-task.herokuapp.com/
 
-## Install Dependencies
+## Install dependencies
 
 If necessary, download and install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com).
 Install dependencies with `yarn install`.
