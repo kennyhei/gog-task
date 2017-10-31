@@ -1,12 +1,12 @@
 # gog-task
 
-GOG.com Front-end developer position - home assignment.
+GOG.com Fall 2012 Front page
 Demo: http://gog-task.herokuapp.com/
 
 ## Install Dependencies
 
-If necessary, download and install Node.js first: https://nodejs.org/en/
-Install dependencies with `npm install` and `bower install`.
+If necessary, download and install Node.js (https://nodejs.org) and Yarn (https://yarnpkg.com).
+Install dependencies with `yarn install`.
 
 ## Running application
 
