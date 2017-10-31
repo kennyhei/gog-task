@@ -8,4 +8,5 @@ app/bower_components/**/*.*
 tmp
 .DS_Store
 .idea
+yarn.lock
 /nbproject/private/
